@@ -54,7 +54,10 @@ jjsgfToRailroad("jjsgfComplex.txt")
 ```
 
 where jjsgfComplex.txt is 
-[jjsgfComplex.txt](https://github.com/user-attachments/files/15980416/jjsgfComplex.txt) 
+[jjsgfComplex.txt](https://github.com/user-attachments/files/15980416/jjsgfComplex.txt). , This writes to a series of files {rule_name}.svg which contains the content of the railroad diagram. As an example, root.svg from this grammar is shown:
+
+
+![root (64)](https://github.com/codemstrneel/grammarprocessor/assets/41355538/ae2b2bd8-ce7f-411b-afe2-a894d433b322)
 
 
 
