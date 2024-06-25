@@ -34,7 +34,7 @@ def find_public_rule(json_string):
     except json.JSONDecodeError as e:
         return f"Invalid JSON: {e}"
 
-def extract_rules(json_string):
+def extract_rules(jjsgf_string):
     def replace_tags_with_exclamations(input_dict):
     # Regular expression to match tags inside curly braces
         pattern = r'\{([^{}]*)\}'
@@ -51,8 +51,8 @@ def extract_rules(json_string):
     
         return processed_dict
     rules = {}
-    rules.update(extract_non_public_rules(json_string))
-    public_rules = find_public_rule(json_string)
+    rules.update(extract_non_public_rules(jjsgf_string))
+    public_rules = find_public_rule(jjsgf_string)
     if isinstance(public_rules, dict):
         rules.update(public_rules)
     
