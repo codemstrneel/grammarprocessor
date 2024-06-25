@@ -68,9 +68,9 @@ The following methods are used to process the JJSGF::
 extract_rules(jjsgf_string)  
 ```
 
-This method takes in a string and returns a processed dictionary with key of the rule name between < and > delimeters and the content of the rule, with tags between !! and !! delimeters as a result. As an example, the tensPlace rule from the Zip Code grammar is as follows:
+This method takes in a string and returns a processed dictionary with key of the rule name between < and > delimeters and the content of the rule, with tags between !! and !! delimeters as a result. As an example, the yes_phrase rule from the jjsgfComplex grammar is as follows:
 
-'\<tensPlace\>': '(twenty  !!out.tensPlace="2";!! | thirty  !!out.tensPlace="3";!! | forty  !!out.tensPlace="4";!! | fifty  !!out.tensPlace="5";!! | sixty  !!out.tensPlace="6";!! | seventy  !!out.tensPlace="7";!! | eighty  !!out.tensPlace="8";!! | ninety  !!out.tensPlace="9";!!)'
+'<yes_phrase>': '([sure|ok] ([<yes> [<yes>]] <yes> ))'
 
 
 ```python
