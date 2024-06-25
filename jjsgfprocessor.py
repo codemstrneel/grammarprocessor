@@ -199,5 +199,4 @@ def jjsgfToRailroad(file_name):
   f = open(file_name, "r")
   jjsgf=f.read()
   all_rules=extract_rules(jjsgf)
-  all_rules=replace_tags_with_exclamations(all_rules)
   createDiagram(all_rules)
