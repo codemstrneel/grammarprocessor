@@ -11,6 +11,17 @@ Each of these files, grxmlprocessor.py and jjsgfprocessor.py, contain their own 
 
 grxmlprocessor.py
 ----------
+Constructing a set of diagram for the rules from a grxml file contains one function call
+
+```python
+grxmlToRailroad(zip_code_no_refs.grxml)  
+```
+
+will create the folloinwg
+
+
+
+
 grxmlprocessor.py uses the following main methods:
 
 parse_grxml_from_string returns root and ns, where root is the grammar in readable xml format, and ns is the set of rules for the XML.
