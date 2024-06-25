@@ -35,12 +35,28 @@ def find_public_rule(json_string):
         return f"Invalid JSON: {e}"
 
 def extract_rules(json_string):
+    def replace_tags_with_exclamations(input_dict):
+    # Regular expression to match tags inside curly braces
+        pattern = r'\{([^{}]*)\}'
+    
+        # Create a new dictionary to store the processed strings
+        processed_dict = {}
+    
+        for key, value in input_dict.items():
+            #print("a")
+            # Replace all occurrences of the pattern with '!!' around the captured group
+            processed_value = re.sub(pattern, r'!!\1!!', value)
+            # Add the processed value to the new dictionary
+            processed_dict[key] = processed_value
+    
+        return processed_dict
     rules = {}
     rules.update(extract_non_public_rules(json_string))
     public_rules = find_public_rule(json_string)
     if isinstance(public_rules, dict):
         rules.update(public_rules)
-
+    
+    rules=replace_tags_with_exclamations (rules)
     return rules
 
 def extract_non_public_rules(json_string):
@@ -76,21 +92,7 @@ def remove_text_inside_braces(input_dict):
 
     return processed_dict
 
-def replace_tags_with_exclamations(input_dict):
-    # Regular expression to match tags inside curly braces
-    pattern = r'\{([^{}]*)\}'
 
-    # Create a new dictionary to store the processed strings
-    processed_dict = {}
-
-    for key, value in input_dict.items():
-        #print("a")
-        # Replace all occurrences of the pattern with '!!' around the captured group
-        processed_value = re.sub(pattern, r'!!\1!!', value)
-        # Add the processed value to the new dictionary
-        processed_dict[key] = processed_value
-
-    return processed_dict
 
 def createDiagram(rules):
 
