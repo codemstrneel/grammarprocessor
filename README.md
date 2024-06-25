@@ -35,6 +35,16 @@ This method takes in a string and returns a processed dictionary with key of the
 '\<tensPlace\>': '(twenty  !!out.tensPlace="2";!! | thirty  !!out.tensPlace="3";!! | forty  !!out.tensPlace="4";!! | fifty  !!out.tensPlace="5";!! | sixty  !!out.tensPlace="6";!! | seventy  !!out.tensPlace="7";!! | eighty  !!out.tensPlace="8";!! | ninety  !!out.tensPlace="9";!!)'
 
 
+```python
+createDiagram(rules) 
+```
+
+takes a set of rules in the above format and writes to a series of svg files with file name {rule_name}.ssvg
+
+
+
+
+
 jjsgfprocessor.py
 ----------
 
