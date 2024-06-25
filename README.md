@@ -22,6 +22,19 @@ grxmlToRailroad("zip_code_no_refs.grxml")
 
 ![ROOT (63)](https://github.com/codemstrneel/grammarprocessor/assets/41355538/b16b7b3f-c395-40f7-bcde-a20b159bb149)
 
+
+__________
+The following methods are used to process the grxml:
+
+```python
+extract_rules(xml_string)  
+```
+
+This method takes in a string and returns a processed dictionary with key of the rule name between < and > delimeters and the content of the rule, with tags between !! and !! delimeters as a result. As an example, the tensPlace grammar from above is as follows:
+
+'<tensPlace>': '(twenty  !!out.tensPlace="2";!! | thirty  !!out.tensPlace="3";!! | forty  !!out.tensPlace="4";!! | fifty  !!out.tensPlace="5";!! | sixty  !!out.tensPlace="6";!! | seventy  !!out.tensPlace="7";!! | eighty  !!out.tensPlace="8";!! | ninety  !!out.tensPlace="9";!!)'
+
+
 jjsgfprocessor.py
 ----------
 
