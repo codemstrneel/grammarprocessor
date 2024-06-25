@@ -1,4 +1,4 @@
-![ROOT (63)](https://github.com/codemstrneel/grammarprocessor/assets/41355538/b16b7b3f-c395-40f7-bcde-a20b159bb149)# Grammar Processor
+# Grammar Processor
 
 ==========================================
 
