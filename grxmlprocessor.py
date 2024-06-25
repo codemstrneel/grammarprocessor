@@ -2,10 +2,7 @@ import xml.etree.ElementTree as ET
 import re
 from railroad import Diagram, Choice, Sequence, Optional, Terminal, NonTerminal, Skip, Comment
 
-def parse_grxml_from_string(xml_string):
-    root = ET.fromstring(xml_string)
-    ns = {'': 'http://www.w3.org/2001/06/grammar'}
-    return root, ns
+
 
 def find_grammar_name(root):
     return root.attrib.get('version')
@@ -21,7 +18,12 @@ def find_public_rule(root, ns):
         return "No public rule found"
     return public_rule
 
-def extract_rules(root, ns):
+def extract_rules(xml_string)):
+    def parse_grxml_from_string(xml_string):
+        root = ET.fromstring(xml_string)
+        ns = {'': 'http://www.w3.org/2001/06/grammar'}
+        return root, ns
+    root, ns = parse_grxml_from_string(xml_string)
     rules = extract_non_public_rules(root, ns)
     public_rules = find_public_rule(root, ns)
     if isinstance(public_rules, dict):
