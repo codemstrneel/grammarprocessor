@@ -74,35 +74,35 @@ def replace_tags_with_exclamations(input_dict):
 
 
 def createDiagram(rules):
-  
+
 
   # Define the rules as given, given as a dictionary
-  
+
   def parse_rule(rule):
       def handle_alternatives(content):
           parts = split_outside_parentheses(content, '|')
           return Choice(0, *map(parse_sequence, parts))
-  
+
       def handle_optional(content):
           parts = split_outside_parentheses(content, '|')
           if len(parts) > 1:
               return Optional(Choice(0, *map(parse_sequence, parts)), skip=Skip())
           else:
               return Optional(parse_sequence(content), skip=Skip())
-  
+
       def handle_nonterminal(content):
           return NonTerminal(content)
-  
+
       def handle_terminal(content):
           return Terminal(content)
-  
+
       def handle_comment(content):
           return Comment(content)
-  
+
       def parse_sequence(content):
           parts = split_outside_parentheses(content, ' ')
           return Sequence(*[parse_part(part) for part in parts if part])
-  
+
       def parse_part(part):
           part = part.strip()
           if part.startswith('!!') and part.endswith('!!'):
@@ -119,7 +119,7 @@ def createDiagram(rules):
                   return handle_nonterminal(rule_name)
           else:
               return handle_terminal(part)
-  
+
       def split_outside_parentheses(s, delimiter):
           result = []
           current = []
@@ -154,21 +154,21 @@ def createDiagram(rules):
               i += 1
           result.append(''.join(current).strip())
           return result
-  
+
       # Check if the top-level should be handled as a choice
       top_level_parts = split_outside_parentheses(rule, '|')
       if len(top_level_parts) > 1:
           return handle_alternatives(rule)
       else:
           return parse_sequence(rule)
-  
+
   diagrams = {}
-  
+
   for key, value in rules.items():
       diagrams[key] = Diagram(parse_rule(value))
-  
-  
-  
+
+
+
   for key, diagram in diagrams.items():
       with open(f'{key[1:-1]}.svg', 'w') as f:
           diagram.writeStandalone(f.write)
@@ -176,8 +176,9 @@ def createDiagram(rules):
 
 
 
-def grxmlToRailroad(file):
-  grxml_content=file.read()
+def grxmlToRailroad(file_name):
+  f = open(file_name, "r")
+  grxml_content=f.read()
   root, ns = parse_grxml_from_string(grxml_content)
   all_rules = extract_rules(root, ns)
   createDiagram(all_rules)
