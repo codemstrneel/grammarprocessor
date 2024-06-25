@@ -181,6 +181,5 @@ def createDiagram(rules):
 def grxmlToRailroad(file_name):
   f = open(file_name, "r")
   grxml_content=f.read()
-  root, ns = parse_grxml_from_string(grxml_content)
-  all_rules = extract_rules(root, ns)
+  all_rules = extract_rules(grxml_content)
   createDiagram(all_rules)
