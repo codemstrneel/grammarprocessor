@@ -11,7 +11,7 @@ Each of these files, grxmlprocessor.py and jjsgfprocessor.py, contain their own 
 
 grxmlprocessor.py
 ----------
-Constructing a set of diagram for the rules from a grxml file contains one function call, for example
+Constructing a set of diagrams for a grxml grammar contains one function call, for example
 
 ```python
 grxmlToRailroad("zip_code_no_refs.grxml")  
@@ -39,8 +39,7 @@ This method takes in a string and returns a processed dictionary with key of the
 createDiagram(rules) 
 ```
 
-takes a set of rules in the above format and writes to a series of svg files with file name {rule_name}.ssvg
-
+takes a set of rules in the above format and writes to a series of svg files with file name {rule_name}.svg
 
 
 
@@ -48,8 +47,58 @@ takes a set of rules in the above format and writes to a series of svg files wit
 jjsgfprocessor.py
 ----------
 
-extract_rules takes a string from a jjsgf file and puts it into a common dictionary format that createDiagram can process - the rule name is the key and maps to a string for the rule, with tags put between !! delimeters
+Constructing a set of diagrams for a grxml grammar contains one function call, for example
 
-createDiagram takes in a dictionary of rules in string format and parses them to generate the railroad diagram in SVG format
+```python
+jjsgfToRailroad("jjsgfComplex.txt")  
+```
 
-jjsgfToRailroad takes in a string for the file name and creates svg files visualizing each rule within the grammar
+where jjsgfComplex.txt is 
+[jjsgfComplex.txt](https://github.com/user-attachments/files/15980416/jjsgfComplex.txt) 
+
+[Uploading jjsgf{
+  "type": "JJSGF",
+  "parameters": {
+    "tag-format": "semantics/1.0-literals"
+  },
+  "grammar": "pizza",
+  "public": {
+    "root": "<card_phrase> {card} | <cash_phrase> {cash} | <pickup_phrase> {pickup} | <delivery_phrase> {delivery} | <agent_phrase> {agent} | <yes_phrase> {yes} | <no> {no} | <hello> {hello}"
+  },
+  "rules": { 
+    "yes_phrase": "([sure|ok] ([<yes> [<yes>]] <yes> ))",
+    "yes": "(yes|yeah)",
+    "no": "([no] no)",
+    "hello": "((hello) | (hell oh) | (hlo))",
+    "card_phrase": "[uh] (([[i] [will] pay] [debit] <card> [at [the] store]) | (paying with [a] <card>) | (it will be <card>) )",
+    "card": "(card|cord|car|cart)",
+    "cash_phrase": "[uhm|yes] (([[(i [will]) | (i'll)] pay] <cash> [at [the] store]) | (paying <cash>) | (it will be <cash>) | (by <cash>) | (<cash> <cash>))",
+    "cash": "(cash | cosh | (c a s h cash))",
+    "pickup_phrase": "[uh|ah] (([i'll] <pickup> [at [the] store]) | (store <pickup>) | ([[(it's | order)] for] <pickup>) | ([<pickup>] <pickup> <pickup>))",
+    "pickup": "(pickup | (pick up) | ((curbside|curside) [pickup]) | (carryout) | (takeout))",
+    "delivery_phrase": "(([((it will)|(it'll)) be] [for] <delivery>) | ([[i] (want|wanna) [to]] [order] [for] <delivery>) ) [it's a robot i think]",
+    "delivery": "([a | the] (delivery | delivry | dilivry | deliver | delivered))",
+    "agent_phrase": "([card<yes>|no|neither|none|but] (([[([i] (need|want) to) | (could i) | (i wanna) | (can i) | (canna) | (may i)] (speak|talk) to] <agent> [dude|man]) | ( transfer [me] [to] <agent>) | (i want <agent> [to talk to]) | (give me <agent>)))",
+    "agent": "( [a|aye|an|the] ((customer service) | (agent) | (representative|represenative) | (someone|somewa|somebody) | (someone else) | (human [being]) | ([live|lie] person) | (operator) | (store)))"
+  }
+}
+Complex.txt…]()
+
+
+The following methods are used to process the JJSGF::
+
+```python
+extract_rules(jjsgf_string)  
+```
+
+This method takes in a string and returns a processed dictionary with key of the rule name between < and > delimeters and the content of the rule, with tags between !! and !! delimeters as a result. As an example, the tensPlace rule from the Zip Code grammar is as follows:
+
+'\<tensPlace\>': '(twenty  !!out.tensPlace="2";!! | thirty  !!out.tensPlace="3";!! | forty  !!out.tensPlace="4";!! | fifty  !!out.tensPlace="5";!! | sixty  !!out.tensPlace="6";!! | seventy  !!out.tensPlace="7";!! | eighty  !!out.tensPlace="8";!! | ninety  !!out.tensPlace="9";!!)'
+
+
+```python
+createDiagram(rules) 
+```
+
+takes a set of rules in the above format and writes to a series of svg files with file name {rule_name}.svg
+
