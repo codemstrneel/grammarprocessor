@@ -6,5 +6,4 @@ This is a library for processing grammars in [GRXML] (https://www.w3.org/TR/spee
 
 Diagrams
 --------
-
-The grxmlToRailroad 
+Each of these files, grxmlprocessor.py and jjsgfprocessor.py, contain their own unique ways of parsing
