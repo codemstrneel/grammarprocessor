@@ -8,6 +8,9 @@ Diagrams
 --------
 Each of these files, grxmlprocessor.py and jjsgfprocessor.py, contain their own unique ways of parsing the different styles of grammar.
 
+
+grxmlprocessor.py
+----------
 grxmlprocessor.py uses the following main methods:
 
 parse_grxml_from_string returns root and ns, where root is the grammar in readable xml format, and ns is the set of rules for the XML.
@@ -16,9 +19,15 @@ extract_rules takes the root and ns values parse_grxml_from_string returns and p
 
 createDiagram takes in a dictionary of rules in string format and parses them to generate the railroad diagram in SVG format
 
+grxmlToRailroad takes in a string for the file name and creates svg files visualizing each rule within the grammar
+
+
 
 jjsgfprocessor.py
+----------
 
-_________
+extract_rules takes a string from a jjsgf file and puts it into a common dictionary format that createDiagram can process - the rule name is the key and maps to a string for the rule, with tags put between !! delimeters
 
-extract_rules returns a dictionary with tags between two !! tags on each side and the rest of the rule in original string fore, similar to the same function in the grxmlprocessor.py library. Then, createDiagram is analogous and creates svg files.
+createDiagram takes in a dictionary of rules in string format and parses them to generate the railroad diagram in SVG format
+
+jjsgfToRailroad takes in a string for the file name and creates svg files visualizing each rule within the grammar
