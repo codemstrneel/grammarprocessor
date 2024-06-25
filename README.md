@@ -17,7 +17,7 @@ Constructing a set of diagram for the rules from a grxml file contains one funct
 grxmlToRailroad(zip_code_no_refs.grxml)  
 ```
 
-will create the folloinwg
+will create the following files, where zip_code_no_refs.grxml is found at https://support.voicegain.ai/hc/en-us/articles/360046906211-Sample-GRXML-Grammars.
 
 
 
