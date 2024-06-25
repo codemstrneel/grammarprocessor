@@ -172,7 +172,7 @@ def createDiagram(rules):
   for key, diagram in diagrams.items():
       with open(f'{key[1:-1]}.svg', 'w') as f:
           diagram.writeStandalone(f.write)
-          print(diagram)
+          #print(diagram)
 
 
 
