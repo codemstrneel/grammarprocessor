@@ -18,7 +18,7 @@ def find_public_rule(root, ns):
         return "No public rule found"
     return public_rule
 
-def extract_rules(xml_string)):
+def extract_rules(xml_string):
     def parse_grxml_from_string(xml_string):
         root = ET.fromstring(xml_string)
         ns = {'': 'http://www.w3.org/2001/06/grammar'}
